@@ -6,7 +6,11 @@
     #include <arpa/inet.h>
     #include <netdb.h>
 #endif
-#include <arpa/nameser.h>
+#ifdef PYCARES_BUNDLED
+	#include "nameser.h"
+#else
+	#include <arpa/nameser.h>
+#endif
 
 static PyObject* PyExc_AresError;
 
