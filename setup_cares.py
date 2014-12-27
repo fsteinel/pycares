@@ -13,7 +13,6 @@ from distutils import log
 from distutils.command.build_ext import build_ext
 from distutils.errors import DistutilsError
 
-
 def exec_process(cmdline, silent=True, catch_enoent=True, input=None, **kwargs):
     """Execute a subprocess and returns the returncode, stdout buffer and stderr buffer.
     Optionally prints stdout and stderr while running."""
@@ -75,8 +74,7 @@ class cares_build_ext(build_ext):
 
     def build_extensions(self):
         if self.use_system_libcares:
-            global libcares_version_required
-            pkg_config_version_check('libcares', libcares_version_required)
+            pkg_config_version_check('libcares', self.libcares_version_required)
             runtime_library_dirs = pkg_config_parse('--libs-only-L',   'libcares')
             include_dirs         = pkg_config_parse('--cflags-only-I', 'libcares')
             library_dirs         = pkg_config_parse('--libs-only-L',   'libcares')
