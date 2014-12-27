@@ -14,6 +14,7 @@ libcares_version_required = '1.10.0'
 
 setup(name             = "pycares",
       version          = __version__,
+      libcares_version_required          = libcares_version_required,
       author           = "Saúl Ibarra Corretgé",
       author_email     = "saghul@gmail.com",
       url              = "http://github.com/saghul/pycares",

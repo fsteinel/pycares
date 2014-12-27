@@ -11,7 +11,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -qq libc-ares2 libc-ares-dev
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install --use-mirrors unittest2; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
   - pip install flake8
   - pip install mccabe
   - python setup.py build_ext --use-system-libcares
