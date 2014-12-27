@@ -12,11 +12,12 @@ python:
 #  - sudo apt-get update
 #  - sudo apt-get install -qq -t '1.10*' libc-ares2 libc-ares-dev
 env:
-  - TOX_ENV=py26
-  - TOX_ENV=py27
-  - TOX_ENV=py32
-  - TOX_ENV=py33
-  - TOX_ENV=py34
+#  - TOX_ENV=py26
+#  - TOX_ENV=py27
+#  - TOX_ENV=py32
+#  - TOX_ENV=py33
+#  - TOX_ENV=py34
+  - TOX_ENV=python
   - TOX_ENV=flake8
 install:
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
