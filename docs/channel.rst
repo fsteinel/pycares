@@ -11,23 +11,28 @@ Ares Channel
 
 .. py:class:: pycares.Channel(flags, timeout, tries, ndots, tcp_port, udp_port, servers, domains, lookups, sock_state_cb)
 
-    :param integer flags: Flags controlling the behavior of the resolver. See ``constants``
+    :param flags: Flags controlling the behavior of the resolver. See ``constants``
         for available values.
+    :type flags: integer
 
     :param float timeout: The number of seconds each name server is given to respond to
         a query on the first try. The default is five seconds.
 
-    :param integer tries: The number of tries the resolver will try contacting each name
+    :param tries: The number of tries the resolver will try contacting each name
         server before giving up. The default is four tries.
+    :type tries: integer
 
-    :param integer ndots: The number of dots which must be present in a domain name for it
+    :param ndots: The number of dots which must be present in a domain name for it
         to be queried for "as is" prior to querying for it with the default domain
         extensions appended. The default value is 1 unless set otherwise by resolv.conf
         or the RES_OPTIONS environment variable.
+    :type ndots: integer
 
-    :param integer tcp_port: The (TCP) port to use for queries. The default is 53.
+    :param tcp_port: The (TCP) port to use for queries. The default is 53.
+    :type tcp_port: integer
 
-    :param integer udp_port: The (UDP) port to use for queries. The default is 53.
+    :param udp_port: The (UDP) port to use for queries. The default is 53.
+    :type udp_port: integer
 
     :param list servers: List of nameservers to be used to do the lookups.
 
@@ -48,7 +53,8 @@ Ares Channel
 
         :param string name: Name to query.
 
-        :param integer family: Socket family.
+        :param family: Socket family.
+        :type family: integer
 
         :param callable callback: Callback to be called with the result of the query.
 
@@ -72,9 +78,11 @@ Ares Channel
 
         :param string name: Name to query.
 
-        :param integer port: Port of the service to query.
+        :param port: Port of the service to query.
+        :type port: integer
 
-        :param integer flags: Query flags, see the NI flags section.
+        :param flags: Query flags, see the NI flags section.
+        :type flags: integer
 
         :param callable callback: Callback to be called with the result of the query.
 
@@ -88,7 +96,8 @@ Ares Channel
 
         :param string name: Name to query.
 
-        :param integer query_type: Type of query to perform.
+        :param query_type: Type of query to perform.
+        :type query_type: integer
 
         :param callable callback: Callback to be called with the result of the query.
 
@@ -116,9 +125,11 @@ Ares Channel
 
     .. py:method:: process_fd(read_fd, write_fd)
 
-        :param integer read_fd: File descriptor ready to read from.
+        :param read_fd: File descriptor ready to read from.
+        :type read_fd: integer
 
-        :param integer write_fd: File descriptor ready to write to.
+        :param write_fd: File descriptor ready to write to.
+        :type write_fd: integer
 
         Process the given file descriptors for read and/or write events.
 
