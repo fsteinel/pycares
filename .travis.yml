@@ -31,4 +31,4 @@ install:
     #  - pip install tox
 script:
   - ./tests.py
-  - tox -e $TOX_ENV
+  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; else tox -e $TOX_ENV; fi
