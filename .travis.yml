@@ -19,7 +19,6 @@ install:
 #  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then pip install nose; fi
   - if [[ $TOX_ENV == 'flake8' ]]; then pip install flake8; fi
-  - if [[ $TOX_ENV == 'flake8' ]]; then pip install mccabe; fi
   - pip install tox
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext --use-system-libcares; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
