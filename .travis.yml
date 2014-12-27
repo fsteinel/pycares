@@ -28,7 +28,7 @@ install:
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
   # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
 # TODO: findout howto install system libcares...
-  - if [[ $build ]]; then sed -i 's|1.10|1.7|' setup_cares.py; fi
+  - if [[ $build ]]; then sed -i 's|1.10|1.7|' setup.py || die 'sed failed'; fi
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext $build; fi
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
 script:
