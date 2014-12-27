@@ -71,6 +71,8 @@ class cares_build_ext(build_ext):
         build_ext.initialize_options(self)
         self.cares_clean_compile = 0
         self.use_system_libcares = 0
+        from __main__ import libcares_version_required
+        self.libcares_version_required = libcares_version_required
 
     def build_extensions(self):
         if self.use_system_libcares:
