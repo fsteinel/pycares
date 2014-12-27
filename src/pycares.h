@@ -16,8 +16,13 @@
 #endif
 
 /* c-ares */
-#define CARES_STATICLIB 1
-#include "ares.h"
+#ifdef PYCARES_BUNDLED
+    #define CARES_STATICLIB 1
+    #include "ares.h"
+#else
+    #define CARES_STATICLIB 0
+    #include <ares.h>
+#endif
 
 /* Custom types */
 typedef int Bool;

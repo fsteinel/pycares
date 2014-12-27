@@ -1,11 +1,7 @@
 
 import errno
 import os
-try:
-    # backported python3 subprocess in python2
-    import subprocess32 as subprocess
-except:
-    import subprocess
+import subprocess
 import sys
 import io
 
@@ -90,6 +86,7 @@ class cares_build_ext(build_ext):
             if len(runtime_library_dirs) > 0:
                 self.compiler.set_runtime_library_dirs(runtime_library_dirs)
         else:
+            self.compiler.define_macro('PYCARES_BUNDLED')
             if self.compiler.compiler_type == 'mingw32':
                 # Dirty hack to avoid linking with more than one C runtime when using MinGW
                 self.compiler.dll_libraries = [lib for lib in self.compiler.dll_libraries if not lib.startswith('msvcr')]
