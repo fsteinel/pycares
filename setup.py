@@ -3,11 +3,6 @@
 from setuptools import setup, Extension
 from setup_cares import cares_build_ext
 import codecs
-try:
-    # backported python3 subprocess in python2
-    import subprocess32 as subprocess
-except:
-    import subprocess
 
 __version__ = "0.6.3"
 libcares_version_required = '1.10.0'
