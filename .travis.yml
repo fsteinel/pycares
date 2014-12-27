@@ -13,6 +13,7 @@ before_install:
 # TODO: findout howto install system libcares...
   # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
 #  - sudo apt-get install -qq -t '1.10*' libc-ares2 libc-ares-dev
+  - if [[ $TOX_ENV == 'python' && $build ]]; then sudo apt-get install -qq libc-ares2 libc-ares-dev; fi
 env:
   - TOX_ENV=python
   - TOX_ENV=python $build="--use-system-libcares"
@@ -25,6 +26,9 @@ install:
   - if [[ $TOX_ENV == 'python' ]]; then pip install tox; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext --use-system-libcares; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
+  # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
+# TODO: findout howto install system libcares...
+  - if [[ $build ]]; then sed -i 's|1.10|1.7|' setup_cares.py; fi
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext $build; fi
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
 script:
