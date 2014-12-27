@@ -6,17 +6,18 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -qq python-unittest2 python-nose
 # TODO: findout howto install system libcares...
-#before_install:
-#  # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
-#  - sudo apt-get update
+  # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
 #  - sudo apt-get install -qq -t '1.10*' libc-ares2 libc-ares-dev
 env:
   - TOX_ENV=python
   - TOX_ENV=flake8
 install:
-  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
-  - if [[ $TOX_ENV == 'python' ]]; then pip install nose; fi
+#  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
+#  - if [[ $TOX_ENV == 'python' ]]; then pip install nose; fi
   - if [[ $TOX_ENV == 'flake8' ]]; then pip install flake8; fi
   - if [[ $TOX_ENV == 'flake8' ]]; then pip install mccabe; fi
   - pip install tox
@@ -26,4 +27,5 @@ install:
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
 script:
   - if [[ $TOX_ENV == 'python' ]]; then ./tests.py; fi
-  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; else tox -e $TOX_ENV; fi
+  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; elif [[ $TOX_ENV == 'python' ]]; tox -e $TOX_ENV; fi
+  - if [[ $TOX_ENV == 'flake8' ]]; then flake8 --max-complexity=10 setup.py setup_cares.py; fi
