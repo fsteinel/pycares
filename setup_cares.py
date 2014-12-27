@@ -7,7 +7,6 @@ try:
 except:
     import subprocess
 import sys
-import io
 
 from distutils import log
 from distutils.command.build_ext import build_ext
