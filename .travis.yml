@@ -11,6 +11,13 @@ python:
 #  # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
 #  - sudo apt-get update
 #  - sudo apt-get install -qq -t '1.10*' libc-ares2 libc-ares-dev
+env:
+  - TOX_ENV=py26
+  - TOX_ENV=py27
+  - TOX_ENV=py32
+  - TOX_ENV=py33
+  - TOX_ENV=py34
+  - TOX_ENV=flake8
 install:
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
   - pip install flake8
@@ -23,4 +30,4 @@ install:
     #  - pip install tox
 script:
   - ./tests.py
-  - tox
+  - tox -e $TOX_ENV
