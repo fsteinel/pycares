@@ -7,14 +7,17 @@ python:
   - "3.3"
   - "3.4"
 before_install:
-  - if [[ $TOX_ENV == 'python' ]]; then sudo apt-get update; fi
+  - if [[ $TOX_ENV == 'python' || $TOX_ENV == 'sphinx' ]]; then sudo apt-get update; fi
   - if [[ $TOX_ENV == 'python' ]]; then sudo apt-get install -qq python-nose; fi
+  - if [[ $TOX_ENV == 'sphinx' ]]; then sudo apt-get install -qq python-sphinx; fi
 # TODO: findout howto install system libcares...
   # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
 #  - sudo apt-get install -qq -t '1.10*' libc-ares2 libc-ares-dev
 env:
   - TOX_ENV=python
+  - TOX_ENV=python $build="--use-system-libcares"
   - TOX_ENV=flake8
+  - TOX_ENV=sphinx
 install:
   - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then pip install nose; fi
@@ -22,10 +25,12 @@ install:
   - if [[ $TOX_ENV == 'python' ]]; then pip install tox; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext --use-system-libcares; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
-  - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext; fi
+  - if [[ $TOX_ENV == 'python' ]]; then python setup.py build_ext $build; fi
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
 script:
   - if [[ $TOX_ENV == 'python' ]]; then ./tests.py; fi
 #TODO convert test to tox
 #  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; elif [[ $TOX_ENV == 'python' ]]; then tox -e $TOX_ENV; fi
   - if [[ $TOX_ENV == 'flake8' ]]; then flake8 --max-complexity=10 setup.py setup_cares.py examples/cares-{asyncio,resolver,select}.py; fi
+  - if [[ $TOX_ENV == 'python' ]]; then ./tests.py; fi
+  - if [[ $TOX_ENV == 'sphinx' ]]; then cd doc/; sphinx-build -nW -b html -d _build/doctrees . _build/html; fi
