@@ -178,8 +178,8 @@ def call(command, opt=None):
 
 def pkg_config_version_check(pkg, version):
     try:
-        pipe = call('pkg-config --print-errors --exists "%s >= %s"' %
-                    (pkg, version))
+        call('pkg-config --print-errors --exists "%s >= %s"' %
+               (pkg, version))
     except:
         log.error(sys.exc_info()[0])
         raise SystemExit('Error: %s >= %s not found' % (pkg, version))
