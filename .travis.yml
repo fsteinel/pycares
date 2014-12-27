@@ -21,6 +21,7 @@ env:
   - TOX_ENV=flake8
 install:
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install nosetest; fi
   - pip install flake8
   - pip install mccabe
   - pip install tox 
