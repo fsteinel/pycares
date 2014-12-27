@@ -153,7 +153,7 @@ def call(command, opt=None):
 
     pipe.stdout = pipe.stdout.read()
     if pipe.stdout is not None:
-        if not isinstance(stdout, str):
+        if not isinstance(pipe.stdout, str):
             # decode on Python 3
             # do nothing on Python 2 (it just doesn't care about encoding anyway)
             pipe.stdout = pipe.stdout.decode(sys.stdout.encoding)
