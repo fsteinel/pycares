@@ -75,6 +75,7 @@ class cares_build_ext(build_ext):
 
     def build_extensions(self):
         if self.use_system_libcares:
+            global libcares_version_required
             pkg_config_version_check('libcares', libcares_version_required)
             runtime_library_dirs = pkg_config_parse('--libs-only-L',   'libcares')
             include_dirs         = pkg_config_parse('--cflags-only-I', 'libcares')
