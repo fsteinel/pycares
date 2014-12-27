@@ -162,7 +162,7 @@ def call(command, opt=None):
             pipe.stdout = [x.lstrip(opt) for x in pipe.stdout]
     pipe.stderr = pipe.stderr.read()
     if pipe.stderr is not None:
-        if not isinstance(stdout, str):
+        if not isinstance(pipe.stderr, str):
             # decode on Python 3
             # do nothing on Python 2 (it just doesn't care about encoding anyway)
             pipe.stderr = pipe.stderr.decode(sys.stderr.encoding)
