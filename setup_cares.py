@@ -82,13 +82,13 @@ class cares_build_ext(build_ext):
             library_dirs         = pkg_config_parse('--libs-only-L',   'libcares')
             libraries            = pkg_config_parse('--libs-only-l',   'libcares')
             log.debug(libraries)
-            if libraries.length > 0:
+            if len(libraries) > 0:
                 self.compiler.add_library(libraries)
-            if library_dirs.length > 0:
+            if len(library_dirs) > 0:
                 self.compiler.add_library_dir(library_dirs)
-            if include_dirs.length > 0:
+            if len(include_dirs) > 0:
                 self.compiler.set_include_dirs(include_dirs)
-            if runtime_library_dirs.length > 0:
+            if len(runtime_library_dirs) > 0:
                 self.compiler.set_runtime_library_dirs(runtime_library_dirs)
         else:
             if self.compiler.compiler_type == 'mingw32':
