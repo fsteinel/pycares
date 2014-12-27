@@ -87,7 +87,7 @@ class cares_build_ext(build_ext):
             if len(runtime_library_dirs) > 0:
                 self.compiler.set_runtime_library_dirs(runtime_library_dirs)
         else:
-            self.compiler.define_macro('PYCARES_BUNDLED')
+            self.compiler.define_macro('PYCARES_BUNDLED', 1)
             if self.compiler.compiler_type == 'mingw32':
                 # Dirty hack to avoid linking with more than one C runtime when using MinGW
                 self.compiler.dll_libraries = [lib for lib in self.compiler.dll_libraries if not lib.startswith('msvcr')]
