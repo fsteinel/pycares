@@ -27,5 +27,5 @@ install:
   - if [[ $TOX_ENV == 'python' ]]; then python setup.py install; fi
 script:
   - if [[ $TOX_ENV == 'python' ]]; then ./tests.py; fi
-  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; elif [[ $TOX_ENV == 'python' ]]; tox -e $TOX_ENV; fi
+  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then tox -e py26; elif [[ $TOX_ENV == 'python' ]]; then tox -e $TOX_ENV; fi
   - if [[ $TOX_ENV == 'flake8' ]]; then flake8 --max-complexity=10 setup.py setup_cares.py; fi
