@@ -13,7 +13,7 @@ before_install:
 install:
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install --use-mirrors unittest2; fi
   - python setup.py install
-  - python setup.py install --use-system-libcares
+  - python setup.py install use-system-libcares
     #  - pip install tox
 script:
   - ./tests.py
