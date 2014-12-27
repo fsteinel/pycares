@@ -8,7 +8,7 @@ python:
   - "3.4"
 before_install:
   - if [[ $TOX_ENV == 'python' ]]; then sudo apt-get update; fi
-  - if [[ $TOX_ENV == 'python' ]]; then sudo apt-get install -qq python-unittest2 python-nose; fi
+  - if [[ $TOX_ENV == 'python' ]]; then sudo apt-get install -qq python-nose; fi
 # TODO: findout howto install system libcares...
   # travis ci on 2014-12-27 -> ubuntu 12.04 doesn't contain the libc-ares2 version 1.10.0 - sigh
 #  - sudo apt-get install -qq -t '1.10*' libc-ares2 libc-ares-dev
@@ -16,7 +16,7 @@ env:
   - TOX_ENV=python
   - TOX_ENV=flake8
 install:
-#  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
+  - if [[ $TOX_ENV == 'python' && $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2; fi
 #  - if [[ $TOX_ENV == 'python' ]]; then pip install nose; fi
   - if [[ $TOX_ENV == 'flake8' ]]; then pip install flake8; fi
   - if [[ $TOX_ENV == 'python' ]]; then pip install tox; fi
