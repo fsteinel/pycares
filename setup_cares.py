@@ -12,6 +12,7 @@ from distutils import log
 from distutils.command.build_ext import build_ext
 from distutils.errors import DistutilsError
 
+
 def exec_process(cmdline, silent=True, catch_enoent=True, input=None, **kwargs):
     """Execute a subprocess and returns the returncode, stdout buffer and stderr buffer.
     Optionally prints stdout and stderr while running."""
