@@ -85,6 +85,7 @@ class cares_build_ext(build_ext):
                 self.compiler.set_include_dirs(include_dirs)
             if len(runtime_library_dirs) > 0:
                 self.compiler.set_runtime_library_dirs(runtime_library_dirs)
+            self.compiler.add_include_dir(os.path.join(self.cares_dir, 'src'))
         else:
             self.compiler.define_macro('PYCARES_BUNDLED', 1)
             if self.compiler.compiler_type == 'mingw32':
