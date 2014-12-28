@@ -86,7 +86,7 @@ class cares_build_ext(build_ext):
             if len(include_dirs) > 0:
                 [self.compiler.add_include_dir(include_dirs) for include_dir in include_dirs]
             else:
-                #add system include dir
+                # add system include dir
                 self.compiler.add_include_dir('/usr/include')
             if len(runtime_library_dirs) > 0:
                 self.compiler.add_runtime_library_dir(runtime_library_dirs)
