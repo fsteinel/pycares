@@ -81,7 +81,8 @@ class cares_build_ext(build_ext):
             include_dirs.append('/usr/include')
             #internal .h files
             include_dirs.append(os.path.join(self.cares_dir, 'src'))
-            log.debug(libraries)
+            log.error(include_dirs)
+            log.error(libraries)
             if len(libraries) > 0:
                 self.compiler.add_library(libraries)
             if len(library_dirs) > 0:
