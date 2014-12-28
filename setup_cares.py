@@ -80,11 +80,11 @@ class cares_build_ext(build_ext):
             log.error(include_dirs)
             log.error(libraries)
             if len(libraries) > 0:
-                self.compiler.add_library(librarie) for librarie in libraries
+                [self.compiler.add_library(librarie) for librarie in libraries]
             if len(library_dirs) > 0:
-                self.compiler.add_library_dir(library_dirs) for library_dir in library_dirs
+                [self.compiler.add_library_dir(library_dirs) for library_dir in library_dirs]
             if len(include_dirs) > 0:
-                self.compiler.add_include_dir(include_dirs) for include_dir in include_dirs
+                [self.compiler.add_include_dir(include_dirs) for include_dir in include_dirs]
             else:
                 #add system include dir
                 self.compiler.add_include_dir('/usr/include')
