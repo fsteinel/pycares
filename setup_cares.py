@@ -77,6 +77,8 @@ class cares_build_ext(build_ext):
             include_dirs         = pkg_config_parse('--cflags-only-I', 'libcares')
             library_dirs         = pkg_config_parse('--libs-only-L',   'libcares')
             libraries            = pkg_config_parse('--libs-only-l',   'libcares')
+            #add system include dir
+            include_dirs.append('/usr/include')
             #internal .h files
             include_dirs.append(os.path.join(self.cares_dir, 'src'))
             log.debug(libraries)
