@@ -79,8 +79,6 @@ class cares_build_ext(build_ext):
             libraries            = pkg_config_parse('--libs-only-l',   'libcares')
             #add system include dir
             include_dirs.append('/usr/include')
-            #internal .h files
-            include_dirs.append(os.path.join(self.cares_dir, 'src'))
             log.error(include_dirs)
             log.error(libraries)
             if len(libraries) > 0:
@@ -88,9 +86,9 @@ class cares_build_ext(build_ext):
             if len(library_dirs) > 0:
                 self.compiler.add_library_dir(library_dirs)
             if len(include_dirs) > 0:
-                self.compiler.set_include_dirs(include_dirs)
+                self.compiler.add_include_dirs(include_dirs)
             if len(runtime_library_dirs) > 0:
-                self.compiler.set_runtime_library_dirs(runtime_library_dirs)
+                self.compiler.add_runtime_library_dirs(runtime_library_dirs)
 
         if self.use_system_libcares == 0:
             self.compiler.define_macro('PYCARES_BUNDLED', 1)
