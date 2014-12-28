@@ -86,9 +86,9 @@ class cares_build_ext(build_ext):
             if len(library_dirs) > 0:
                 self.compiler.add_library_dir(library_dirs)
             if len(include_dirs) > 0:
-                self.compiler.add_include_dirs(include_dirs)
+                self.compiler.add_include_dir(include_dirs)
             if len(runtime_library_dirs) > 0:
-                self.compiler.add_runtime_library_dirs(runtime_library_dirs)
+                self.compiler.add_runtime_library_dir(runtime_library_dirs)
 
         if self.use_system_libcares == 0:
             self.compiler.define_macro('PYCARES_BUNDLED', 1)
