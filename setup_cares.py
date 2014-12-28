@@ -77,8 +77,8 @@ class cares_build_ext(build_ext):
             include_dirs         = pkg_config_parse('--cflags-only-I', 'libcares')
             library_dirs         = pkg_config_parse('--libs-only-L',   'libcares')
             libraries            = pkg_config_parse('--libs-only-l',   'libcares')
-            log.error(include_dirs)
-            log.error(libraries)
+            log.debug(include_dirs)
+            log.debug(libraries)
             if len(libraries) > 0:
                 [self.compiler.add_library(librarie) for librarie in libraries]
             if len(library_dirs) > 0:
