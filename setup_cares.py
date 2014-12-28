@@ -106,7 +106,8 @@ class cares_build_ext(build_ext):
         if self.compiler.compiler_type == 'mingw32':
             self.compiler.add_library_dir(self.cares_dir)
             self.compiler.add_library('cares')
-        self.extensions[0].extra_objects = [self.cares_lib]
+        if self.use_system_libcares == 0:
+            self.extensions[0].extra_objects = [self.cares_lib]
         self.compiler.add_include_dir(os.path.join(self.cares_dir, 'src'))
         if sys.platform.startswith('linux'):
             self.compiler.add_library('rt')
